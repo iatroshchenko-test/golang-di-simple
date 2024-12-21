@@ -4,7 +4,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/spf13/viper"
 	"goapi/src/shared/application/routes"
-	"goapi/src/shared/infrastructure/di"
+	"goapi/src/shared/infrastructure/dicontainer"
 	"log"
 )
 
@@ -23,10 +23,10 @@ func main() {
 	app := fiber.New()
 
 	// create container
-	container := di.BuildContainer()
+	dicontainer.BuildContainer()
 
 	// create routes
-	routes.CreateRoutes(app, container)
+	routes.CreateRoutes(app)
 
 	// listen
 	app.Listen(":" + viper.GetString("port"))

@@ -7,7 +7,7 @@ import (
 )
 
 type ListUsers struct {
-	DB *gorm.DB
+	DB *gorm.DB `di.inject:""`
 }
 
 func NewListUsers(db *gorm.DB) *ListUsers {
